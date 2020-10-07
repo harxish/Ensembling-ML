@@ -1,5 +1,5 @@
 import math
-from fitness import get_fitness
+from src/fitness import get_fitness
 
 class DNA:
 
