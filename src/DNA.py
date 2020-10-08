@@ -1,10 +1,12 @@
 import math
-from src/fitness import get_fitness
+import random
+from src.fitness import get_fitness
 
 class DNA:
 
     def __init__(self, model_len, preprocessing_len):
-        self.fitness = 0
+        self.fitness = .0
+        self.prob = .0
         self.model_len = model_len
         self.preprocessing_len = preprocessing_len
         self.model_genes = [random.randint(0, 1) for i in range(model_len)]
@@ -13,8 +15,7 @@ class DNA:
 
     def calcFitness(self):
         if self.model_genes == [0]*self.model_len:
-                self.fitness = math.inf
-                return
+                self.model_genes[random.randint(0, self.model_len-1)] = 1
 
         self.fitness = get_fitness(self.model_genes, self.preprocessing_genes)
 
@@ -46,4 +47,11 @@ class DNA:
 
 
     def __str__(self):
-        return "".join(self.model_genes + self.preprocessing_genes)
+        to_print = []
+        to_print.extend(self.model_genes)
+        to_print.extend(self.preprocessing_genes)
+        string =  "".join([str(x) for x in to_print])
+        string += " -> "
+        string += str(round(self.fitness, 2))
+
+        return string

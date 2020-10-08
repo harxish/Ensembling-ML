@@ -1,7 +1,7 @@
 import numpy as np
 
-from data import get_data
-from model import get_models
+from src.data import get_data
+from src.model import get_models
 
 def get_fitness(model_genes, preprocessing_genes):
 
@@ -21,7 +21,6 @@ def get_fitness(model_genes, preprocessing_genes):
 
     for i in range(len(predictions)):
         fitness += predictions[i][y_test[i]]
-    fitness = len(predictions) - fitness
 
     return fitness
 

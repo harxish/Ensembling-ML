@@ -1,6 +1,9 @@
+import random
+from src.DNA import DNA
+
 class Population:
 
-    def __init__(self, model_len, preprocessing_len, popMax, mutationRate):
+    def __init__(self, model_len=3, preprocessing_len=3, popMax=15, mutationRate=.01):
 
         self.popMax = popMax
         self.mutationRate = mutationRate
@@ -24,20 +27,20 @@ class Population:
 
     def calcFitness(self):
 
-        for i in self.population:
-            i.calcFitness()
+        for dna in self.population:
+            dna.calcFitness()
 
 
     def initFitness(self):
 
         self.sumFitness = 0
-        for i in self.population:
-            self.sumFitness += i.fitness
+        for dna in self.population:
+            self.sumFitness += dna.fitness
 
 
     def getWeightedRandom(self):
 
-        rand = round(random.uniform(1, self.sumFitness+1))
+        rand = random.uniform(1, self.sumFitness+1)
         for i in self.population:
             rand -= i.fitness
             if rand < 1:
@@ -52,17 +55,18 @@ class Population:
         for i in self.population:
             if i.fitness > max:
                 max = i.fitness
-                self.best = "".join(i.genes)
+                self.best = "".join(str(i))
 
 
     def naturalSelection(self):
 
         self.initFitness()
         self.newPopulation.clear()
+
         for _ in range(len(self.population)):
             X, Y = self.getWeightedRandom(), self.getWeightedRandom()
             XY, YX = X.crossover(Y), Y.crossover(X)
             XY.mutate(self.mutationRate), YX.mutate(self.mutationRate)
-            self.newPopulation.append(XY if XY.fitness > YX.fitness else YX)
+            self.newPopulation.append(XY if XY.fitness < YX.fitness else YX)
 
         self.population = [i for i in self.newPopulation]

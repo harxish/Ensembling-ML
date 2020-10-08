@@ -1,10 +1,16 @@
 import numpy as np
+import warnings
 
 from sklearn.svm import SVC
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.linear_model import LogisticRegression
 
 MODELS = ['svm', 'knn', 'logistic']
+
+def warn(*args, **kwargs):
+    pass
+warnings.warn = warn
+
 
 def get_models(genes):
 
@@ -19,7 +25,7 @@ def get_models(genes):
             models.append(KNeighborsClassifier(n_neighbors=5))
 
         elif i == 'logistic':
-            models.append(LogisticRegression(random_state=0))
+            models.append(LogisticRegression(random_state=0, max_iter=1000))
 
     return models
 
