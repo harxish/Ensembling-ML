@@ -22,7 +22,7 @@ def get_fitness(model_genes, preprocessing_genes):
     for i in range(len(predictions)):
         fitness += predictions[i][y_test[i]]
 
-    return fitness
+    return fitness, fitness/len(X_test)
 
 
 if __name__ == "__main__":

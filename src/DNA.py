@@ -6,6 +6,7 @@ class DNA:
 
     def __init__(self, model_len, preprocessing_len):
         self.fitness = .0
+        self.probability = .0
         self.prob = .0
         self.model_len = model_len
         self.preprocessing_len = preprocessing_len
@@ -17,7 +18,7 @@ class DNA:
         if self.model_genes == [0]*self.model_len:
                 self.model_genes[random.randint(0, self.model_len-1)] = 1
 
-        self.fitness = get_fitness(self.model_genes, self.preprocessing_genes)
+        self.fitness, self.probability = get_fitness(self.model_genes, self.preprocessing_genes)
 
 
     def crossover(self, Y):
@@ -52,6 +53,6 @@ class DNA:
         to_print.extend(self.preprocessing_genes)
         string =  "".join([str(x) for x in to_print])
         string += " -> "
-        string += str(round(self.fitness, 2))
+        string += str(round(self.probability*100, 2))
 
         return string
