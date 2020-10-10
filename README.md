@@ -29,3 +29,18 @@ The genes undergo crossover and mutation during natural selection. The fitness i
 python3 main.py --generations 100 --pop_max 50 --mutation_rate 0.01 
                 --model_len 3 --preprocessing_len 3
 ```
+---
+ 
+## Output
+
+| Generation | Best Gene | Accuracy |
+| ----------- | ----------- | ----------- |
+| 1 | 101010 | 95.52 |
+| 2 | 110110 | 96.15 |
+| 3 | 010100 | 96.34 |
+| 4 | 010100 | 95.54 |
+| 5 | 110111 | 96.24 |
+| 6 | 010100 | 95.54 |
+| 7 | 010100 | 96.57 |
+| 8 | 010100 | 95.66 |
+| 9 | 010000 | 96.57 |
