@@ -1,7 +1,7 @@
 [![forthebadge](https://forthebadge.com/images/badges/powered-by-coffee.svg)](https://forthebadge.com)
 
-# Genetic-Algorithms-Ensembling
-Ensembling Machine learning algorithms using Genetic Algorithms.
+# Ensembling-ML
+Ensembling Machine learning algorithms using Optimization Algorithms.
 
 Using Genetic algorithms figure out the best combination of pre-processing functions and models so that the best accuracy is obtained. The gene is bit array of length #models + #pre-processing functions. The first half is the model gene where 1 means the model is taken into considerations 0 means not. The same holds for preprocessing gene, 1 means the pre processing function is performed and 0 means not.
 
